@@ -22,6 +22,7 @@ Clients can act upon the following commands:
 2. Play a specific asset (with an optional duration) immediately. If the duration is absent or set to zero, the client will not resume its current playlist)
 3. Queue a specific asset for playback at a specific time. This works like the above, except that the device will set an internal timer for playing the item. There might be an arbitrary number of assets queued up at any one time, and queueing a `null` item clears the whole queue.
 4. Set the current group (i.e., subscribe to an additional broker topic to allow coordinating multiple devices). A `null` group means the device will go back to listening only for direct instructions
+5. Reset/reboot the device (if at all possible considering some of the constraints of managed code in Android)
 
 ### Assets
 
