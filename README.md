@@ -6,6 +6,10 @@ This is a clean-room re-implementation of our [digital signage server][dss] back
 * Rebuilding the system as a set of communicating processes.
 * Real-time control and coordination of multiple signage devices into a "videowall".
 
+# Development Requirements
+
+This is being developed using [fig][fig], so you should have a [Docker][d]-capable environment.
+
 ## Client Protocol
 
 ### Lifecycle
@@ -37,3 +41,5 @@ Text messages, notices, etc., are merely a matter of handing over the required t
 
 [mqtt]: http://www.mqtt.org
 [dss]: http://github.com/sapo/digital-signage-server
+[fig]: http://www.fig.sh
+[d]: http://www.docker.com

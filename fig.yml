@@ -1,0 +1,20 @@
+app:
+    build: .
+    command: hy app.hy
+    links:
+        - redis
+        - mosquitto
+    # Mount the current directory inside the container so we don' have to rebuild the image
+    volumes:
+        - .:/code
+
+# setup MQTT broker and Redis containers and map their ports to the host
+mosquitto:
+    image: ansi/mosquitto:latest
+    ports:
+        - "1883:1883"
+
+redis:
+    image: redis:latest
+    ports:
+        - "6379:6379"
