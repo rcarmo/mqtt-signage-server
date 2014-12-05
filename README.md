@@ -1,4 +1,4 @@
-# mqtt-signage
+# mqtt-signage-server
 
 This is a clean-room re-implementation of our [digital signage server][dss] back-end, focusing on:
 
