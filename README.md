@@ -60,7 +60,7 @@ Clients can display two kinds of assets, both specified by URLs:
 
 Text messages, notices, etc., are merely a matter of handing over the required text as a URL parameter to the web pages themselves.
 
-> There are a number of issues associated with video playback (and being able to interrupt it/ending it cleanly) in clients that merit more notes later.
+> There are a number of issues associated with video playback (and being able to interrupt it/ending it cleanly) in clients that merit more notes later, and it is possible that an extra media type be added for still images to make sure they're auto-sized to fit in a lightbox.
 
 [mqtt]: http://www.mqtt.org
 [dss]: http://github.com/sapo/digital-signage-server
