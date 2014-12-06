@@ -6,9 +6,22 @@ This is a clean-room re-implementation of our [digital signage server][dss] back
 * Rebuilding the system as a set of communicating processes.
 * Real-time control and coordination of multiple signage devices into a "videowall".
 
-# Development Requirements
+# Getting Started
 
 This is being developed using [fig][fig], so you should have a [Docker][d]-capable environment.
+
+## Setting up
+
+```
+make bootstrap
+fig build
+```
+
+## Running (Development)
+
+```
+fig up
+```
 
 ## Client Protocol
 
