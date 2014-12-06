@@ -3,4 +3,4 @@ ADD . /code
 WORKDIR /code
 RUN apt-get update && apt-get -y dist-upgrade 
 RUN apt-get -y install make python-pip
-RUN make deps
+RUN pip install -r requirements.txt
