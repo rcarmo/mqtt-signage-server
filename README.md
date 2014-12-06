@@ -23,6 +23,16 @@ fig build
 fig up
 ```
 
+# Architecture
+
+The server stack consists of an [MQTT][mqtt] broker (`mosquitto`), [Redis][r] for state handling and storage and a set of processes that provide:
+
+* A monitoring agent for keeping track of signage devices 
+* A playlist agent that parses and assigns playlists
+* (in the future) a web UI to manage device groups and playlists
+
+All of these are automatically setup by [fig][fig] for development. The agents will try to reach `mosquitto` and [Redis][r] on `localhost` when running outside a container.
+
 # Client Protocol
 
 ### Lifecycle
@@ -56,3 +66,4 @@ Text messages, notices, etc., are merely a matter of handing over the required t
 [dss]: http://github.com/sapo/digital-signage-server
 [fig]: http://www.fig.sh
 [d]: http://www.docker.com
+[r]: http://redis.io
