@@ -1,7 +1,10 @@
 (import 
     [os [environ]]
-    [urlparse [urlparse]])
-    
+    [urlparse [urlparse]]
+    [logging [getLogger basicConfig DEBUG INFO]])
+
+(def *debug-mode* true)    
+
 (defn from-env [variable &optional [default-value "tcp://localhost:80"]]
     (.split (.replace (.get environ variable default-value) "tcp://" "") ":"))
     
@@ -16,3 +19,7 @@
 
 (def *redis-port* 
     (int (get (from-env "REDIS_PORT" "tcp://localhost:6379") 1)))
+    
+(if *debug-mode*
+    (apply basicConfig [] {"level" DEBUG})
+    (apply basicConfig [] {"level" INFO}))

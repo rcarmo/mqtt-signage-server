@@ -23,7 +23,7 @@ fig build
 fig up
 ```
 
-## Client Protocol
+# Client Protocol
 
 ### Lifecycle
 

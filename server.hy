@@ -1,13 +1,16 @@
 (import
+    [json [loads dumps]]
+    [logging [getLogger]]
     [config [*mqtt-server* *mqtt-port* *redis-server* *redis-port*]]
     [redis [StrictRedis :as Redis]]
     [paho.mqtt.client [Client]])
 
+(setv log (getLogger))
 
 (defn on-message [client userdata msg]
     (let [[topic   msg.topic]
-          [payload (str msg.payload)]]
-          (print topic payload)))
+          [payload (loads msg.payload)]] ; TODO: handle possible exceptions
+          (.debug log (+ topic ":" (str payload)))))
 
 ; signage/report
 ;   {"url" None "duration" 0 "ip" "127.0.0.1" "mac" "de:ad:be:ef:00:42" "playlist" "uuid"}
@@ -17,8 +20,9 @@
 ; signage/reset/<id>
 
 (defn on-connect [client userdata flags rc]
+    (.debug log "connected.")
     ; paho does not like Unicode strings
-    (.subscribe client (str "signage/report") 0))
+    (.subscribe client (str "signage/#") 0))
 
 (defmain [&rest args]
     (let [[c (Client)]
