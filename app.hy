@@ -1,5 +1,6 @@
 (import
-    [config [*mqtt-server* *mqtt-port*]]
+    [config [*mqtt-server* *mqtt-port* *redis-server* *redis-port*]]
+    [redis [StrictRedis :as Redis]]
     [paho.mqtt.client [Client]])
 
 
@@ -16,10 +17,12 @@
 ; signage/reset/<id>
 
 (defn on-connect [client userdata flags rc]
-    (.subscribe client "signage/report"))
+    ; paho does not like Unicode strings
+    (.subscribe client (str "signage/report") 0))
 
 (defmain [&rest args]
-    (let [[c (Client)]]
+    (let [[c (Client)]
+          [r (apply Redis [] {"host" *redis-server* "port" *redis-port*})]]
         (setv c.on-connect on-connect)
         (setv c.on-message on-message)
         (.connect c *mqtt-server* *mqtt-port* 60)
