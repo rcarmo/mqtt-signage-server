@@ -35,13 +35,13 @@ All of these are automatically setup by [fig][fig] for development. The agents w
 
 # Client Protocol
 
-### Lifecycle
+## Lifecycle
 
 1. Clients connect to the [MQTT][mqtt] broker and report their MAC address, current IP address and other internal state (including timestamp) via the `signage/report` topic.
 2. Clients subscribe to `signage/control/<identifier>`, where `identifier` is their (lowercased) MAC address or a group label.
 3. Clients then act on received payloads (there is no explicit disconnect notification).
 
-### Commands
+## Commands
 
 Clients can act upon the following commands:
 
@@ -51,14 +51,14 @@ Clients can act upon the following commands:
 4. Set the current group (i.e., subscribe to an additional broker topic to allow coordinating multiple devices). A `null` group means the device will go back to listening only for direct instructions
 5. Reset/reboot the device (if at all possible considering some of the constraints of managed code in Android)
 
-### Assets
+# Assets
 
 Clients can display two kinds of assets, both specified by URLs:
 
 * Web pages
 * Video files
 
-Text messages, notices, etc., are merely a matter of handing over the required text as a URL parameter to the web pages themselves.
+Text messages, notices, etc., are merely a matter of handing over the required text as a URL parameter to the web pages themselves. Assets have optional duration and validity fields.
 
 > There are a number of issues associated with video playback (and being able to interrupt it/ending it cleanly) in clients that merit more notes later, and it is possible that an extra media type be added for still images to make sure they're auto-sized to fit in a lightbox.
 
