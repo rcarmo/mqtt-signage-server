@@ -20,6 +20,8 @@ fig build
 ## Running (Development)
 
 ```
+# If using boot2docker
+$(boot2docker shellinit)
 fig up
 ```
 
@@ -61,6 +63,12 @@ Clients can display two kinds of assets, both specified by URLs:
 Text messages, notices, etc., are merely a matter of handing over the required text as a URL parameter to the web pages themselves. Assets have optional duration and validity fields.
 
 > There are a number of issues associated with video playback (and being able to interrupt it/ending it cleanly) in clients that merit more notes later, and it is possible that an extra media type be added for still images to make sure they're auto-sized to fit in a lightbox.
+
+# TODO:
+
+* Modernize `fig` setup to use Docker compose instead
+* MQTT route handler
+* Actors
 
 [mqtt]: http://www.mqtt.org
 [dss]: http://github.com/sapo/digital-signage-server
