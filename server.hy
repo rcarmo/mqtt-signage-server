@@ -20,7 +20,7 @@
 ; signage/reset/<id>
 
 (defn on-connect [client userdata flags rc]
-    (.debug log "connected.")
+    (.debug log (.format "connected to {}:{}" *mqtt-server* *mqtt-port*))
     ; paho does not like Unicode strings
     (.subscribe client (str "signage/#") 0))
 
